@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Gitfix
+from .models import Ticket
 
 # Create your views here.
 def home(request):

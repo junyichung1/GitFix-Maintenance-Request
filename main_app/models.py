@@ -6,7 +6,11 @@ CATEGORIES = (
     ('LIG', 'Light fixtures'),
 )
 
-PRIORITIES = ('LOW', 'MEDIUM', 'HIGH')
+PRIORITIES = (
+    ('L', 'LOW'),
+    ('M', 'MEDIUM'),
+    ('H', 'HIGH'),
+)
 
 STATUSES = (
     ('NEW', 'New Ticket'),
@@ -21,7 +25,7 @@ class Ticket(models.Model):
         choices=CATEGORIES,
     )
     priority = models.CharField(
-        max_length=6,
+        max_length=1,
         choices=PRIORITIES,
     )
     location = models.CharField(max_length=50)
