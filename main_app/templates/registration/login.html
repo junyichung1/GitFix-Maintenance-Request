@@ -1,18 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Log In</h1>
+<section class="loginform">
+  <div class="columns">
+  <<div class="column is-4"></div>
+  <div class="column is-4">
+    
 
-<form method="post" action="#">
-  <div class="field">
-  <p class="control">
-      <input class="input" type="text" placeholder="UserName">
-    </p>
+
+    <nav class="panel">
+      <p class="panel-heading">
+        Login to Your Account
+      </p>
+      
+        
+           <div class="form-login">
+             
+            <form action="">
+              <div class="field">
+                <label for="" class="label">Username</label>
+                <div class="control has-icons-left">
+                  <input type="username" placeholder="Your Username" class="input" required>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user-lock"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="" class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input type="password" placeholder="*******" class="input" required>
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-lock"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <button class="button is-danger is-pulled-right">
+                  Login
+                </button>
+              </div>
+            </form>    
+          </div>      
+    </nav>
+  <div class="column is-4"></div>
   </div>
-  <div class="field">
-      <input class="input" type="password" placeholder="Password">
-    </p>
-  </div>
-<form>
+</section>  
+
 
 {% endblock %}
