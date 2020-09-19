@@ -45,3 +45,4 @@ class Unit(models.Model):
     unit_status = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
