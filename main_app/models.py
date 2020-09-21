@@ -21,6 +21,11 @@ STATUSES = (
 
 
 # Create your models here.
+class Unit(models.Model):
+    unit_number = models.CharField(max_length=10)
+    unit_status = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now_add=False)
+    
 class Ticket(models.Model):
     category = models.CharField(
         max_length=3,
@@ -32,17 +37,15 @@ class Ticket(models.Model):
     )
     location = models.CharField(max_length=50)
     description = models.TextField(max_length=250)
-    unit_id = models.IntegerField()
     status =models.CharField(
         max_length=3,
         choices=STATUSES,
     )
     date_created = models.TimeField()
     completion_date = models.TimeField()
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
 
-class Unit(models.Model):
-    unit_number = models.CharField(max_length=10)
-    unit_status = models.BooleanField(default=False)
-    timestamp = models.DateTimeField(auto_now_add=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    phone = models.CharField(max_length=13)
