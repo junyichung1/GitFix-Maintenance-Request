@@ -16,32 +16,13 @@
         
            <div class="form-login">
              
-            <form method="post" action="{% url 'login' %}">
-              {% csrf_token %}
-              <div class="field">
-                <label for="" class="label">Username</label>
-                <div class="control has-icons-left">
-                  <input type="username" placeholder="Your Username" class="input" required>
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-user-lock"></i>
-                  </span>
-                </div>
-              </div>
-              <div class="field">
-                <label for="" class="label">Password</label>
-                <div class="control has-icons-left">
-                  <input type="password" placeholder="*******" class="input" required>
-                  <span class="icon is-small is-left">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                </div>
-              </div>
-              <div class="field">
-                <input type="submit" class="button is-danger is-pulled-right" value="login">
-                <input type="hidden" name="next" value="{{ next }}">
-
-              </div>
-            </form>    
+<!-- Add the login form -->
+<form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" class="btn" value="login">
+  <input type="hidden" name="next" value="{{ next }}">
+</form>
           </div>      
     </nav>
   <div class="column is-4"></div>
