@@ -1,6 +1,96 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Index</h1>
+ 
+<div class="columns">
+    <div class="column is-2"></div>
+    <div class="column is-8">
+        <div class="columns">
+            <div class="column is-3">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>User Info</th>
+                    </tr>
+                </thead>
+            <tbody>
+                <tr>
+                    <td>User Name</td>
+                    <td>blablab</td>
+                </tr>
+                <tr>
+                    <td>Unit Number</td>
+                    <td>blablab</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>blablab</td>
+                </tr>
+                <tr>
+                    <td>Phone Number</td>
+                    <td>blablab</td>
+                </tr>
+            </tbody></table>
+            </div>
+            <div class="column is-9">
+                
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>TickeID</th>
+                        <th>Location</th>
+                        <th>Date</th>
+                        <th>Priority</th>
+                        <th align="center">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>00000</td>
+                        <td>Kitchen</td>
+                        <td>09-20-2020</td>
+                        <td>Low</td>
+                        <td align="center"><i class="fas fa-folder-open"></i></td>
+                      </tr>
+                      <tr>
+                        <td>00000</td>
+                        <td>Restroom</td>
+                        <td>09-20-2020</td>
+                        <td>Medium</td>
+                        <td align="center"><i class="fas fa-tools"></i></td>
+                      </tr>
+                      <tr>
+                        <td>00000</td>
+                        <td>Restroom</td>
+                        <td>09-11-2020</td>
+                        <td>Medium</td>
+                        <td align="center"><i class="fas fa-calendar-check"></i></td>
+                      </tr>
+                      <tr>
+                        <td>00000</td>
+                        <td>Restroom</td>
+                        <td>09-21-2020</td>
+                        <td>High</td>
+                        <td align="center"><i class="fas fa-window-close"></i></td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                          <td colspan="5">New Ticket : <i class="fas fa-folder-open"></i>&nbsp;&nbsp;
+                            Pending : <i class="fas fa-tools"></i>&nbsp;&nbsp;
+                            Done : <i class="fas fa-calendar-check"></i>&nbsp;&nbsp;
+                            Cancel : <i class="fas fa-window-close"></i></td>
+                        </tr>
+                    </tfoot>
+                  </table>
+
+
+            </div>
+        </div>
+    <div class="column is-2"></div>
+</div>
+
+
+
 
 {% endblock %}
