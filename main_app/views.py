@@ -13,8 +13,9 @@ def home(request):
 @login_required
 def tickets_index(request):
     users = request.user.get_username()
+    # user_unit = Unit.objects.filter(userid=users).values
     # tickets = Ticket.objects.filter(unit = .unit)
-    return render(request, 'tickets/index.html', {'users': users, 'tickets': tickets}) 
+    return render(request, 'tickets/index.html', {'users': users}) #'tickets': tickets}) 
 
 def signup(request):
     error_message = ''
