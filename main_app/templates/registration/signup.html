@@ -7,38 +7,19 @@
   <div class="column is-8">
     <p><br><h3 class="title is-3">Registration Form</h3></p>
 
-              <div class="field">
+              <!-- <div class="field">
                   <label class="label">Full Name</label>
                   <div class="control">
                     <input class="input" type="text" placeholder="Full Name" required minlength="10">
                   </div>
-                </div>
+                </div> -->
                 
-                <div class="field">
-                  <label class="label">Phone Number</label>
-                  <div class="control">
-                    <input class="input" type="tel" placeholder="000-000-0000" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-                  </div>
-                </div>
-
-                <div class="field">
-                  <label class="label">Email Address</label>
-                  <div class="control">
-                    <input class="input" type="email" placeholder="Text input" required size="40">
-                  </div>
-                </div>
-
-                <div class="field">
-                  <div class="control  is-pulled-right">
-                    <label class="checkbox">
-                      <input type="checkbox">
-                      I agree to the <a href="#">terms and conditions</a>
-                    </label>
-                  </div>
-                </div>
-                  <div class="control is-pulled-right">
-                    <button class="button is-link">Submit</button>
-                  </div>
+                {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
+<form method="post" action="{% url 'signup' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" class="btn" value="signup">
+</form>
             </div>
           <div class="column is-2"></div>
   </div>
