@@ -1,5 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
+from datetime import datetime
+
+# type:'timestamp with time zone'
 
 CATEGORIES = (
     ('ELE', 'Electric'),
@@ -44,11 +48,17 @@ class Ticket(models.Model):
         max_length=3,
         choices=STATUSES,
     )
-    date_created = models.DateTimeField()
+    date_created = models.DateTimeField(default=datetime.now)
     completion_date = models.TimeField()
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.description
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
     phone = models.CharField(max_length=13)
+
+    def __str__(self):
+        return self.user.username
