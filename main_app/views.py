@@ -9,6 +9,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def home(request):
     return render(request, 'registration/login.html')
 
+@login_required
+def tickets_index(request):
+    tickets = Ticket.objects.filter(user=request.user)
+    return render(request, 'tickets/index.html', {'tickets': tickets})
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':
