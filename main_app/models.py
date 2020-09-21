@@ -26,6 +26,9 @@ class Unit(models.Model):
     unit_status = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=False)
     
+    def __str__(self):
+        return self.unit_number
+    
 class Ticket(models.Model):
     category = models.CharField(
         max_length=3,
@@ -41,7 +44,7 @@ class Ticket(models.Model):
         max_length=3,
         choices=STATUSES,
     )
-    date_created = models.TimeField()
+    date_created = models.DateTimeField()
     completion_date = models.TimeField()
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
 

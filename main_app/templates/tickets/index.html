@@ -14,45 +14,51 @@
                     </tr>
                 </thead>
             <tbody>
+              
                 <tr>
                     <td>User Name</td>
-                    <td>blablab</td>
+                    <td>{{ user }}</td>
                 </tr>
                 <tr>
                     <td>Unit Number</td>
-                    <td>blablab</td>
+                    <td>{{ user.profile.unit }}</td>
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td>blablab</td>
+                    <td>{{ user.email }}</td>
                 </tr>
                 <tr>
                     <td>Phone Number</td>
-                    <td>blablab</td>
+                    <td>{{ user.profile.phone }}</td>
                 </tr>
+                
             </tbody></table>
             </div>
             <div class="column is-9">
                 
                 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                     <thead>
+                      
                       <tr>
-                        <th>TickeID</th>
+                        <th>TicketID</th>
                         <th>Location</th>
                         <th>Date</th>
                         <th>Priority</th>
                         <th align="center">Status</th>
                       </tr>
+                      
                     </thead>
                     <tbody>
+                      {% for ticket in tickets %}
                       <tr>
-                        <td>00000</td>
-                        <td>Kitchen</td>
-                        <td>09-20-2020</td>
-                        <td>Low</td>
+                        <td>{{ ticket.id }}</td>
+                        <td>{{ ticket.location }}</td>
+                        <td>{{ ticket.date_created }}</td>
+                        <td> {{ ticket.priority }}</td>
                         <td align="center"><i class="fas fa-folder-open"></i></td>
                       </tr>
-                      <tr>
+                      {% endfor %}
+                      <!-- <tr>
                         <td>00000</td>
                         <td>Restroom</td>
                         <td>09-20-2020</td>
@@ -72,7 +78,7 @@
                         <td>09-21-2020</td>
                         <td>High</td>
                         <td align="center"><i class="fas fa-window-close"></i></td>
-                      </tr>
+                      </tr> -->
                     </tbody>
                     <tfoot>
                         <tr>
