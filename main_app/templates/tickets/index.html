@@ -17,19 +17,19 @@
               
                 <tr>
                     <td>User Name</td>
-                    <td>{{ user }}</td>
+                    <td>{{ profile.user.first_name }} {{ profile.user.last_name }}</td>
                 </tr>
                 <tr>
                     <td>Unit Number</td>
-                    <td>{{ user.profile.unit }}</td>
+                    <td>{{ profile.unit.unit_number }}</td>
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td>{{ user.email }}</td>
+                    <td>{{ profile.user.email }}</td>
                 </tr>
                 <tr>
                     <td>Phone Number</td>
-                    <td>{{ user.profile.phone }}</td>
+                    <td>{{ profile.phone }}</td>
                 </tr>
                 
             </tbody></table>
