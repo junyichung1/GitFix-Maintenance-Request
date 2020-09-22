@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView
+from .forms import TicketForm
 
 # Create your views here.
 @login_required
@@ -17,12 +18,38 @@ def tickets_index(request):
     try:
         profile = Profile.objects.get(user=request.user)
         tickets = Ticket.objects.filter(unit=profile.unit.unit_number)
-        return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets })
+        unit = Unit.objects.get(unit_number=profile.unit.unit_number)
+        ticket_form = TicketForm()
+        return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets, 'unit': unit, 'ticket_form': ticket_form})
     except Profile.DoesNotExist:
         profile = 0
         tickets = Ticket.objects.filter(unit=profile)
-        return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets })
+        return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets})
         
+
+# def tickets_detail(request, ticket_id):
+#     ticket = Ticket.objects.get(id=ticket_id)
+#     return render(request, 'tickets/detail.html', {'ticket': ticket})
+
+
+def tickets_create(request, unit_id):
+    form = TicketForm(request.POST)
+    if form.is_valid():
+        new_ticket = form.save(commit=False)
+        new_ticket.unit_id = unit_id
+        new_ticket.save()
+    # return redirect('index')
+    return render(request, 'tickets/ticket_form.html', {'unit.id': unit_id})
+
+# class TicketCreate(LoginRequiredMixin, CreateView):
+#     model = Ticket
+#     # profile = Profile.objects.get(user=request.user)
+#     # unit = profile.unit.unit_number
+#     fields = ['category', 'priority', 'location', 'description', 'unit']
+
+#     def form_valid(self, form):
+#         form.instance.unit = self.request.user
+#         return super().form_valid(form)
 
 def signup(request):
     error_message = ''
@@ -44,8 +71,3 @@ class NewLogoutView(LogoutView):
         context = super().get_context_data(**kwargs)
         # context['categories'] = Category.objects.all()
         return context
-
-
-class TicketCreate(LoginRequiredMixin, CreateView):
-    model = Ticket
-    fields = ['category', 'priority', 'location', 'description']

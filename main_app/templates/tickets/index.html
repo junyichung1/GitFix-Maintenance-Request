@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
- 
+
 <div class="columns">
     <div class="column is-1"></div>
     <div class="column is-10">
@@ -31,6 +31,10 @@
                     <td>Phone Number</td>
                     <td>{{ profile.phone }}</td>
                 </tr>
+                <tr>
+                    <td>Unit ID</td>
+                    <td>{{ unit.id }}</td>
+                </tr>
                 
             </tbody></table>
             </div>
@@ -38,13 +42,14 @@
                 
                 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                     <thead>
-                      
+                        
                       <tr>
-                        <th>TicketID</th>
+                        <th><a href="/tickets/detail/{{ticket.id}}">TicketID</a></th>
                         <th>Location</th>
                         <th>Date</th>
                         <th>Priority</th>
                         <th align="center">Status</th>
+
                       </tr>
                       
                     </thead>
@@ -58,6 +63,17 @@
                         <td align="center"><i class="fas fa-folder-open"></i></td>
                       </tr>
                       {% endfor %}
+                      <tr>
+                        
+                          <td>
+                              <form action="{% url 'tickets_create' unit.id %}" method="post">
+                                  <!-- Django requires the following for security purposes -->
+                                  {% csrf_token %}
+                                  {{ ticket_form.as_p }}
+                                  <input type="submit" value="Submit!" class="btn">
+                                </form>
+                          </td>
+                      </tr>
                      
                     </tbody>
                     <tfoot>
