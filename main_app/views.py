@@ -13,9 +13,16 @@ def home(request):
 
 @login_required
 def tickets_index(request):
-    profile = Profile.objects.get(user=request.user)
-    tickets = Ticket.objects.filter(unit=profile.unit.unit_number)
-    return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets })
+    try:
+        profile = Profile.objects.get(user=request.user)
+    # print(f"This is {profile}")
+        tickets = Ticket.objects.filter(unit=profile.unit.unit_number)
+        return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets })
+    except Profile.DoesNotExist:
+        profile = 0
+        tickets = Ticket.objects.filter(unit=0)
+        return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets })
+        
 
 def signup(request):
     error_message = ''
