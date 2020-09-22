@@ -6,20 +6,47 @@
   <<div class="column is-2"></div>
   <div class="column is-8">
     <p><br><h3 class="title is-3">Registration Form</h3></p>
+    {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
+    <form method="post" action="/accounts/signup/">
+      {% csrf_token %}
+      <div class="field">
+        <label for="username" class="label">Username</label>
+        <div class="control">
+          <input class="input" type="text" name="username" id="id_username" placeholder="Username" required minlength="5">
+        </div>
+      </div>
+      <div class="field">
+        <label for="password1" class="label">Password</label>
+        <div class="control">
+          <input class="input" type="password" name="password1" id="id_password1" placeholder="********" required size="8">
+        </div>
+      </div>
+      <div class="field">
+        <label for="password2" class="label">Re-Enter Password</label>
+        <div class="control">
+          <input class="input" type="password" name="password2" id="id_password2" placeholder="*******" required size="8">
+        </div>
+      </div>
 
-              <!-- <div class="field">
-                  <label class="label">Full Name</label>
-                  <div class="control">
-                    <input class="input" type="text" placeholder="Full Name" required minlength="10">
-                  </div>
-                </div> -->
-                
-                {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
-<form method="post" action="{% url 'signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="signup">
-</form>
+      <div class="field">
+        <div class="control  is-pulled-right">
+          <label class="checkbox">
+            <input type="checkbox">
+            I agree to the <a href="#">terms and conditions</a>
+          </label>
+        </div>
+      </div>
+      <div class="control is-pulled-right">
+
+      <input type="submit" class="button is-link" value="signup">
+      </div>
+
+      
+    </form>
+
+
+</div>
+              
             </div>
           <div class="column is-2"></div>
   </div>
@@ -28,3 +55,4 @@
 
 
 {% endblock %}
+

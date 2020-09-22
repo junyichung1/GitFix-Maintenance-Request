@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<section class="loginform">
+
+<br><br>
+<section class="loginform2">
   <div class="columns">
-  <<div class="column is-4"></div>
+  <div class="column is-4"></div>
   <div class="column is-4">
     
-
-
     <nav class="panel">
       <p class="panel-heading">
         Login to Your Account
@@ -16,18 +16,45 @@
         
            <div class="form-login">
              
-<!-- Add the login form -->
-<form method="post" action="{% url 'login' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="login">
-  <input type="hidden" name="next" value="{{ next }}">
-</form>
+            <form id="login-form" method="post" 
+                        action="{% url 'login' %}">
+                      {% csrf_token %}
+              <div class="field">
+                <label for="id_username" class="label">Username</label>
+                <div class="control has-icons-left">
+                  <input type="text" name="username" placeholder="Your Username" class="input" required id="id_username">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user-lock"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="id_password" class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input type="password" name="password" placeholder="*******" class="input" required id="id_password">
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-lock"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <input type="submit" class="button is-danger is-pulled-right" value="Login">
+                <input type="hidden" name="next" value="{{ next }}">
+              </div>
+            </form>    
+
+
           </div>      
     </nav>
   <div class="column is-4"></div>
   </div>
-</section>  
+</section>
+
+
 
 
 {% endblock %}
+
+
+
+
