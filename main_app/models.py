@@ -47,6 +47,7 @@ class Ticket(models.Model):
     status =models.CharField(
         max_length=3,
         choices=STATUSES,
+        default='NEW',
     )
     date_created = models.DateTimeField(default=datetime.now)
     completion_date = models.TimeField()
