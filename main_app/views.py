@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView
 from .models import Unit, Ticket, Profile
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -15,12 +16,11 @@ def home(request):
 def tickets_index(request):
     try:
         profile = Profile.objects.get(user=request.user)
-    # print(f"This is {profile}")
         tickets = Ticket.objects.filter(unit=profile.unit.unit_number)
         return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets })
     except Profile.DoesNotExist:
         profile = 0
-        tickets = Ticket.objects.filter(unit=0)
+        tickets = Ticket.objects.filter(unit=profile)
         return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets })
         
 
@@ -38,9 +38,14 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-class NewLogoutView(LogoutView):
 
+class NewLogoutView(LogoutView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # context['categories'] = Category.objects.all()
         return context
+
+
+class TicketCreate(LoginRequiredMixin, CreateView):
+    model = Ticket
+    fields = ['category', 'priority', 'location', 'description']
