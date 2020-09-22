@@ -19,22 +19,22 @@
       </div>
       
       <div class="field">
-        <label class="label">Category</label>
+        <label for="id_category" class="label">Category</label>
         <div class="control">
             <div class="select">
-                <select name="category">
+                <select name="category" required id="id_category">
                 <option value="ELE">Electric Problem</option>
                 <option value="PLU">Plumbing Problem</option>
                 <option value="LIG">Light Fixtures</option>
-              </select> </div>
+              </select></div>
               </div>
       </div>
 
       <div class="field">
-        <label class="label">Priority</label>
+        <label for="id_priority" class="label">Priority</label>
         <div class="control">
             <div class="select">
-                <select name="priority">
+                <select name="priority" id="id_priority"> 
                   <option value="L">Low Priority</option>
                   <option value="M">Medium Priority</option>
                   <option value="H">High Priority</option>
@@ -48,16 +48,16 @@
               <div class="column is-5">
                 <p><br><h3 class="title is-3">&nbsp;</h3></p>
                 <div class="field">
-                    <label class="label">Location</label>
+                    <label for="id_location" class="label">Location</label>
                     <div class="control">
-                      <input class="input" type="text" name="location" placeholder="Kitchen, Restroom..." required minlength="10">
+                      <input class="input" type="text" name="location" placeholder="Kitchen, Restroom..." required minlength="10" id="id_location">
                     </div>
                   </div>
                   
                   <div class="field">
-                    <label class="label">Description</label>
+                    <label for="id_descripiton" class="label">Description</label>
                     <div class="control">
-                        <textarea class="textarea" name="description" placeholder="Details of the request" rows="4"></textarea>
+                        <textarea class="textarea" name="description" placeholder="Details of the request" rows="4" id="id_description"></textarea>
 
                     </div>
                   </div>
@@ -66,7 +66,7 @@
                   <div class="field">
                     <div class="control  is-pulled-right">
                       <label class="checkbox">
-                        <input type="checkbox">
+                        <input name="permission" type="checkbox" id="id_permission">
                         Permission to enter to my place
                       </label>
                     </div>
