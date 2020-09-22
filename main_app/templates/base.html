@@ -47,6 +47,7 @@
           <div class="buttons">
             <a class="button is-danger" href="{% url 'signup' %}">Sign Up</a>
             {% if user.is_authenticated %}
+            <a class="button is-success" href="/tickets/create/">Logout</a>
             <a class="button is-warning" href="/logout/">Logout</a>
             {% endif %}
           </div>
