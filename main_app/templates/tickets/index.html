@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td>{{ profile.user.email }}</td>
+                    <td>{{ profile.user.id }}</td>
                 </tr>
                 <tr>
                     <td>Phone Number</td>
@@ -36,7 +36,7 @@
                     <td>{{ unit.id }}</td>
                 </tr>
                 <tr>
-                  <td><a href="{% url 'user_update' user.id %}">Edit</a></td>
+                  <td><a href="{% url 'user_update' profile.id %}">Edit</a></td>
                 </tr>
                 
             </tbody></table>

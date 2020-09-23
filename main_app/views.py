@@ -19,7 +19,6 @@ def tickets_index(request):
         profile = request.user.profile
         unit = profile.unit
         tickets = unit.ticket_set.all()
-        # ticket_form = TicketForm()
         return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets, 'unit': unit})
     except Profile.DoesNotExist:
         profile = 0
