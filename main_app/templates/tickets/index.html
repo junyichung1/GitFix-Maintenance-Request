@@ -44,7 +44,7 @@
                     <thead>
                         
                       <tr>
-                        <th><a href="/tickets/detail/{{ticket.id}}">TicketID</a></th>
+                        <th>TicketID</th>
                         <th>Location</th>
                         <th>Date</th>
                         <th>Priority</th>
@@ -56,13 +56,14 @@
                     <tbody>
                       {% for ticket in tickets %}
                       <tr>
-                        <td>{{ ticket.id }}</td>
+                        <td><a href="{% url 'detail' ticket.id %}">{{ ticket.id }}</a></td>
                         <td>{{ ticket.location }}</td>
                         <td>{{ ticket.date_created }}</td>
                         <td> {{ ticket.priority }}</td>
                         <td align="center"><i class="fas fa-folder-open"></i></td>
                       </tr>
                       {% endfor %}
+                      <a class="button is-success is-small" href="{% url 'tickets_create' unit.id %}"><i class="fas fa-plus-square"></i>&nbsp;Create Ticket</a>
                       
                      
                     </tbody>

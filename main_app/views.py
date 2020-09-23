@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import UpdateView, DeleteView
 from .models import Unit, Ticket, Profile
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -16,20 +16,20 @@ def home(request):
 @login_required
 def tickets_index(request):
     try:
-        profile = Profile.objects.get(user=request.user)
-        tickets = Ticket.objects.filter(unit=profile.unit.unit_number)
-        unit = Unit.objects.get(unit_number=profile.unit.unit_number)
-        ticket_form = TicketForm()
-        return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets, 'unit': unit, 'ticket_form': ticket_form})
+        profile = request.user.profile
+        unit = profile.unit
+        tickets = unit.ticket_set.all()
+        # ticket_form = TicketForm()
+        return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets, 'unit': unit})
     except Profile.DoesNotExist:
         profile = 0
         tickets = Ticket.objects.filter(unit=profile)
         return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets})
         
 
-# def tickets_detail(request, ticket_id):
-#     ticket = Ticket.objects.get(id=ticket_id)
-#     return render(request, 'tickets/detail.html', {'ticket': ticket})
+def tickets_detail(request, ticket_id):
+    ticket = Ticket.objects.get(id=ticket_id)
+    return render(request, 'tickets/detail.html', {'ticket': ticket})
 
 
 def tickets_create(request, unit_id):
@@ -43,15 +43,13 @@ def tickets_create(request, unit_id):
         return redirect('index')
     return render(request, 'tickets/ticket_form.html', {'unit': unit, 'ticket_form': ticket_form})
 
-# class TicketCreate(LoginRequiredMixin, CreateView):
-#     model = Ticket
-#     # profile = Profile.objects.get(user=request.user)
-#     # unit = profile.unit.unit_number
-#     fields = ['category', 'priority', 'location', 'description', 'unit']
+class TicketDelete(LoginRequiredMixin, DeleteView):
+    model = Ticket
+    success_url = '/tickets/'
 
-#     def form_valid(self, form):
-#         form.instance.unit = self.request.user
-#         return super().form_valid(form)
+class TicketUpdate(LoginRequiredMixin, UpdateView):
+    model = Ticket
+    fields = ['category', 'priority', 'location', 'description']
 
 def signup(request):
     error_message = ''

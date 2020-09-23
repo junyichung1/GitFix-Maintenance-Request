@@ -47,7 +47,7 @@
           <div class="buttons">
             <a class="button is-danger is-small" href="{% url 'signup' %}"> <i class="fas fa-user-plus"></i>&nbsp;Sign Up</a>
             {% if user.is_authenticated %}
-            <a class="button is-success is-small" href="{% url 'tickets_create' unit.id %}"><i class="fas fa-plus-square"></i>&nbsp;Create Ticket</a>
+            
             <a class="button is-warning is-small" href="/logout/"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
             {% endif %}
           </div>
