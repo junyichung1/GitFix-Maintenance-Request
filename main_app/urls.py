@@ -10,4 +10,5 @@ urlpatterns = [
     path('units/<int:unit_id>/create_ticket/', views.tickets_create, name='tickets_create'),
     path('tickets/<int:pk>/delete/', views.TicketDelete.as_view(), name='tickets_delete'),
     path('tickets/<int:pk>/update/', views.TicketUpdate.as_view(), name='tickets_update'),
+    path('users/<int:pk>/update/', views.UserUpdate.as_view(), name='user_update'),
 ]

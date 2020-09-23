@@ -71,3 +71,8 @@ class NewLogoutView(LogoutView):
         context = super().get_context_data(**kwargs)
         # context['categories'] = Category.objects.all()
         return context
+
+class UserUpdate(LoginRequiredMixin, UpdateView):
+    model = Profile
+    fields = ['phone']
+    success_url = '/tickets/'
