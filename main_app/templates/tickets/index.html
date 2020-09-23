@@ -63,17 +63,7 @@
                         <td align="center"><i class="fas fa-folder-open"></i></td>
                       </tr>
                       {% endfor %}
-                      <tr>
-                        
-                          <td>
-                              <form action="{% url 'tickets_create' unit.id %}" method="post">
-                                  <!-- Django requires the following for security purposes -->
-                                  {% csrf_token %}
-                                  {{ ticket_form.as_p }}
-                                  <input type="submit" value="Submit!" class="btn">
-                                </form>
-                          </td>
-                      </tr>
+                      
                      
                     </tbody>
                     <tfoot>

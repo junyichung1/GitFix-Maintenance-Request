@@ -33,13 +33,15 @@ def tickets_index(request):
 
 
 def tickets_create(request, unit_id):
+    unit = Unit.objects.get(id=unit_id)
+    ticket_form = TicketForm()
     form = TicketForm(request.POST)
     if form.is_valid():
         new_ticket = form.save(commit=False)
         new_ticket.unit_id = unit_id
         new_ticket.save()
-    # return redirect('index')
-    return render(request, 'tickets/ticket_form.html', {'unit.id': unit_id})
+        return redirect('index')
+    return render(request, 'tickets/ticket_form.html', {'unit': unit, 'ticket_form': ticket_form})
 
 # class TicketCreate(LoginRequiredMixin, CreateView):
 #     model = Ticket
