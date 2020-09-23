@@ -26,12 +26,12 @@ def tickets_index(request):
         tickets = Ticket.objects.filter(unit=profile)
         return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets})
         
-
+@login_required
 def tickets_detail(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
     return render(request, 'tickets/detail.html', {'ticket': ticket})
 
-
+@login_required
 def tickets_create(request, unit_id):
     unit = Unit.objects.get(id=unit_id)
     ticket_form = TicketForm()
