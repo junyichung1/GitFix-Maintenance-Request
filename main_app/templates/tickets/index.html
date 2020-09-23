@@ -36,7 +36,8 @@
                     <td>{{ unit.id }}</td>
                 </tr>
                 <tr>
-                  <td><a href="{% url 'user_update' profile.id %}">Edit</a></td>
+                    <td><a href="{% url 'user_update' profile.id %}">Edit</a></td>
+                    <td><a href="{% url 'change_password' %}">Change Password</a></td>
                 </tr>
                 
             </tbody></table>

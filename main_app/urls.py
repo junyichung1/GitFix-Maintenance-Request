@@ -11,4 +11,6 @@ urlpatterns = [
     path('tickets/<int:pk>/delete/', views.TicketDelete.as_view(), name='tickets_delete'),
     path('tickets/<int:pk>/update/', views.TicketUpdate.as_view(), name='tickets_update'),
     path('users/<int:pk>/update/', views.UserUpdate.as_view(), name='user_update'),
+    # path('password/<int:pk>/update/', views.Update.as_view(), name='user_update'),
+    path('user/password_change/', views.change_password, name='change_password'),
 ]
