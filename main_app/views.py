@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView, DeleteView
-from .models import Unit, Ticket, Profile
+from .models import Unit, Ticket, Profile, User
 from django.contrib import messages
 from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView
-from .forms import TicketForm
+from .forms import TicketForm, UserForm
 
 # Create your views here.
 @login_required
@@ -71,10 +71,11 @@ class NewLogoutView(LogoutView):
         # context['categories'] = Category.objects.all()
         return context
 
-class UserUpdate(LoginRequiredMixin, UpdateView):
+class PhoneUpdate(LoginRequiredMixin, UpdateView):
     model = Profile
     fields = ['phone']
     success_url = '/tickets/'
+
 
 def change_password(request):
     if request.method == 'POST':
@@ -91,3 +92,14 @@ def change_password(request):
     return render(request, 'registration/change_password.html', {
         'form': form
     })
+
+def edit_names(request, user_id, template_name="registration/edit_names.html"):
+    if request.method == "POST":
+        form = UserForm(data=request.POST, instance=request.user)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.save()
+            return redirect('index')
+    else:
+        form = UserForm(instance=request.user)
+        return render(request, 'registration/edit_names.html')

@@ -20,6 +20,10 @@
                     <td>{{ profile }}</td>
                 </tr>
                 <tr>
+                    <td><b>Name</b></td>
+                    <td>{{ user.first_name }} {{user.last_name}}</td>
+                </tr>
+                <tr>
                     <td><b>Unit Number</b></td>
                     <td>{{ profile.unit.unit_number }}</td>
                 </tr>
@@ -33,7 +37,8 @@
                 </tr>
 
                 <td colspan="2" align="right">
-                    <a class="button is-info is-small" href="{% url 'user_update' profile.id %}"> <i class="fas fa-user-edit"></i>&nbsp;Edit Info</a>
+                    <a class="button is-info is-small" href="{% url 'user_update' user.id %}"> <i class="fas fa-user-edit"></i>&nbsp;Edit User Info</a>
+                    <a class="button is-info is-small" href="{% url 'phone_update' profile.id %}"> <i class="fas fa-user-edit"></i>&nbsp;Edit Phone Number</a>
                     <a class="button is-success is-small" href="{% url 'change_password' %}"> <i class="fas fa-unlock-alt"></i>&nbsp;Change Password</a>
                 </td>
                 
