@@ -63,6 +63,20 @@ div.failed {
 
 }
 
+div.notification {
+  background: #ffb700;
+  text-align: center;
+  color: #3f3f3f;
+  font-weight: 800;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top:10px
+
+}
+
+
+
+
 .commentbox{
   background: hsl(213, 82%, 78%);
   padding: 10px;
