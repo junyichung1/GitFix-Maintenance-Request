@@ -2,7 +2,7 @@ import uuid
 import boto3
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView, DeleteView
-from .models import Unit, Ticket, Profile, User, Photo
+from .models import Unit, Ticket, Profile, Photo
 from django.contrib import messages
 from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.models import User
@@ -15,7 +15,7 @@ from .forms import TicketForm, UserForm
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'gitfix'
 
-# Create your views here.
+
 
 @login_required
 def home(request):
@@ -113,14 +113,10 @@ def add_photo(request, ticket_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
         s3 = boto3.client('s3')
-        # need a unique "key" for S3 / needs image file extension too
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
-        # just in case something goes wrong
         try:
             s3.upload_fileobj(photo_file, BUCKET, key)
-            # build the full url string
             url = f"{S3_BASE_URL}{BUCKET}/{key}"
-            # we can assign to cat_id or cat (if you have a cat object)
             Photo.objects.create(url=url, ticket_id=ticket_id)
         except:
             print('An error occurred uploading file to S3')
