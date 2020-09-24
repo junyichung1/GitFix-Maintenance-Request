@@ -75,6 +75,10 @@ class PhoneUpdate(LoginRequiredMixin, UpdateView):
     model = Profile
     fields = ['phone']
     success_url = '/tickets/'
+    
+    # This code prevent edit other users information please test it
+    def get_object(self):
+        return self.request.user.profile
 
 @login_required
 def change_password(request):

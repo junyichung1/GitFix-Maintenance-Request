@@ -13,8 +13,11 @@
 <body>
     
 
-
+  {% if user.is_superuser %}
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  {% else %}
   <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+  {% endif %}
     <div class="navbar-brand">
       <a href="/">
         <img src="https://i.imgur.com/tcpID7o.png" id="logo" alt="GitFix : Your go to maintenance buddy" height="280px">
@@ -50,7 +53,7 @@
                 
             <div class="welcome">Welcome, <b>{{ profile }}</b> nice to see you again &nbsp;&nbsp;</div>  
                  {% if user.is_superuser %}
-                 <a class="button is-dark is-small" href="/admin/"><i class="fas fa-sign-out-alt"></i>&nbsp;Super User Area</a>            
+                 <a class="button is-danger is-small" href="/admin/"><i class="fas fa-sign-out-alt"></i>&nbsp;Super User Area</a>            
                  {% endif %}
                  <a class="button is-warning is-small" href="/logout/"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
             {% else %}
