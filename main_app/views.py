@@ -121,3 +121,13 @@ def add_photo(request, ticket_id):
         except:
             print('An error occurred uploading file to S3')
     return redirect('detail', ticket_id=ticket_id)
+
+# class PhotoDelete(LoginRequiredMixin, DeleteView):
+#     model = Photo
+#     success_url = '/tickets/'#'/tickets/ticket_id/detail'
+
+@login_required
+def unassoc_photo(request, ticket_id, photo_id):
+  photo = Photo.objects.get(id=photo_id)
+  photo.delete()
+  return redirect('detail', ticket_id=ticket_id)

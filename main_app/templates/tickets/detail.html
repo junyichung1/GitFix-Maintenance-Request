@@ -35,9 +35,16 @@
           <tr><td colspan="5">
             {{ ticket.description }}
           </td></tr>   
-          <tr><td colspan="5"><p>Click on the image to download</p>
+          <tr><td colspan="5">
             {% for photo in ticket.photo_set.all %}
             <a href="{{photo.url}}" target="_blank"><img class="responsive-img card-panel" src="{{photo.url}}" width="200px" height="auto"></a>
+          <br>
+          
+        <form action="{% url 'unassoc_photo' ticket.id photo.id %}" method="post">
+          {% csrf_token %}
+        <input type="submit" value="X">
+      </form>
+     
           {% empty %}
             <div class="card-panel teal-text center-align">No Photos Uploaded</div>
           {% endfor %}
@@ -51,6 +58,7 @@
 
     <tr><td colspan="4">Add Photos to Your Ticket</td>
       <td colspan="2">
+        
 
         <form action="{% url 'add_photo' ticket.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
           {% csrf_token %}
