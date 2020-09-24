@@ -2,12 +2,53 @@
 
 {% block content %}
 
-<h1>Delete Ticket</h1>
-  <h4>Are you sure you want to delete <span class="teal-text">{{ object.id }}</span>?</h4>
   <form action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="Yes - Delete!" class="btn">
-    <a href="{% url 'detail' ticket.id %}">Cancel</a>
+
+
+<section class="updateform">
+  <div class="columns">
+  <<div class="column is-2"></div>
+  <div class="column is-8">
+      <p><br><h3 class="title is-3">Are you sure you want to delete Ticket#{{ ticket.id }}</h3></p>
+
+
+
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+              
+            <tr>
+              <th>TicketID</th>
+              <th>Location</th>
+              <th>Date</th>
+              <th>Priority</th>
+            </tr>
+            
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="{% url 'detail' ticket.id %}">{{ ticket.id }}</a></td>
+              <td>{{ ticket.location }}</td>
+              <td>{{ ticket.date_created }}</td>
+              <td> {{ ticket.priority }}</td>
+            </tr>
+        <tr><td colspan="4">
+          {{ ticket.description }}
+        </td></tr>   
+        <tr><td colspan="4" align="right">
+          <a class="button is-success is-small" href="{% url 'detail' ticket.id %}">&nbsp;Cancel</a>
+          <input type="submit" class="button is-danger is-small" value='Yes Delete Ticket'>
+        </td></tr>                   
+           
+          </tbody>
+  
+        </table>
+
+            </div>
+          <div class="column is-2"></div>
+  </div>
+</section>  
+
   </form>
 
 {% endblock %}
