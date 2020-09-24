@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.utils.timezone import now
 from datetime import datetime
 
-# type:'timestamp with time zone'
 
 CATEGORIES = (
     ('ELE', 'Electric'),
@@ -25,7 +24,6 @@ STATUSES = (
 )
 
 
-# Create your models here.
 class Unit(models.Model):
     unit_number = models.CharField(max_length=10)
     unit_status = models.BooleanField(default=False)
