@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="" method="POST">
+  {% csrf_token %}
+  
+    <div class="field">
+      <label for="first_name" class="label">First Name</label>
+      <div class="control">
+        <input class="input" type="text" name="first_name" id="first_name" placeholder="First" value="{{ user.first_name }}">
+      </div>
+    <div class="field">
+      <label for="last_name" class="label">Last Name</label>
+      <div class="control">
+        <input class="input" type="text" name="last_name" id="last_name" placeholder="Last" value="{{ user.last_name }}">
+      </div>
+    <div class="field">
+      <label for="email" class="label">Email</label>
+      <div class="control">
+        <input class="input" type="text" name="email" id="email" placeholder="Email" value="{{ user.email }}">
+      </div>
+      <tr><td colspan="2">
+          <input type="submit" />
+      </td></tr>
+  
+</form>
+
+{% endblock %}

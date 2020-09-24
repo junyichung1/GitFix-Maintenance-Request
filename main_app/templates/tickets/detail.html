@@ -6,7 +6,7 @@
 
 <section class="updateform">
     <div class="columns">
-    <<div class="column is-2"></div>
+    <div class="column is-2"></div>
     <div class="column is-8">
         <p><br><h3 class="title is-3">Detail of Ticket#{{ ticket.id }}</h3></p>
 
@@ -17,6 +17,7 @@
                 
               <tr>
                 <th>TicketID</th>
+                <th>Category</th>
                 <th>Location</th>
                 <th>Date</th>
                 <th>Priority</th>
@@ -26,6 +27,7 @@
             <tbody>
               <tr>
                 <td><a href="{% url 'detail' ticket.id %}">{{ ticket.id }}</a></td>
+                <td>{{ ticket.category }}</td>
                 <td>{{ ticket.location }}</td>
                 <td>{{ ticket.date_created }}</td>
                 <td> {{ ticket.priority }}</td>
