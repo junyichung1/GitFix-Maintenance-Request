@@ -27,7 +27,7 @@ p.panel-heading {
 div.form-login {
   background: hsl(0, 0%, 100%);
   padding: 30px;
-  height: 300px;
+  height: 350px;
 }
 
 
@@ -53,6 +53,16 @@ div.form-login {
   background: hsl(204, 86%, 53%);
 }
 
+div.failed {
+  background: #d70000;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 800;
+  border-radius: 5px;
+  padding: 10px;
+
+}
+
 .commentbox{
   background: hsl(213, 82%, 78%);
   padding: 10px;
@@ -66,5 +76,6 @@ div.form-login {
 span.heart {
   color: #f00000;
 }
+
 
 

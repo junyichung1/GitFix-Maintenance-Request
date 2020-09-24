@@ -8,14 +8,23 @@
   <div class="column is-4"></div>
   <div class="column is-4">
     
+
+
+
     <nav class="panel">
       <p class="panel-heading">
         Login to Your Account
       </p>
-      
+    
         
            <div class="form-login">
-             
+           
+          {% if form.errors %}
+           <div class="failed">
+            Your username and password didn't match. 
+             Please try again.
+          </div>
+          {% endif %}
             <form id="login-form" method="post" 
                         action="{% url 'login' %}">
                       {% csrf_token %}
