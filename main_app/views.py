@@ -16,6 +16,7 @@ S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'gitfix'
 
 
+
 @login_required
 def home(request):
     return redirect('index')

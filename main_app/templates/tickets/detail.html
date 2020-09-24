@@ -35,26 +35,52 @@
           <tr><td colspan="5">
             {{ ticket.description }}
           </td></tr>   
+          <tr><td colspan="5"><p>Click on the image to download</p>
+            {% for photo in ticket.photo_set.all %}
+            <a href="{{photo.url}}" target="_blank"><img class="responsive-img card-panel" src="{{photo.url}}" width="200px" height="auto"></a>
+          {% empty %}
+            <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+          {% endfor %}
+          </td></tr>
           <tr><td colspan="5" align="right">
             <a class="button is-info is-small" href="{% url 'tickets_update' ticket.id %}"> <i class="fas fa-edit"></i>&nbsp;Edit Ticket</a>
             <a class="button is-danger is-small" href="{% url 'tickets_delete' ticket.id %}"> <i class="fas fa-trash-alt"></i>&nbsp;Delete Ticket</a>
           </td></tr>                   
              
             </tbody>
-    
-          </table>
-          {% for photo in ticket.photo_set.all %}
-          <img class="responsive-img card-panel" src="{{photo.url}}">
-        {% empty %}
-          <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-        {% endfor %}
-    
+
+    <tr><td colspan="4">Add Photos to Your Ticket</td>
+      <td colspan="2">
+
         <form action="{% url 'add_photo' ticket.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
           {% csrf_token %}
-          <input type="file" name="photo-file">
-          <br><br>
-          <input type="submit" class="btn" value="Upload Photo">
+          <div class="file has-name is-small is-pulled-right">
+            <label class="file-label">
+              <input class="file-input" type="file" name="photo-file">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Choose a file…
+                </span>
+              </span>
+              <span class="file-name">
+                .jpg .png
+              </span>
+            </label>
+            <input type="submit" class="button is-success is-small is-pulled-right" value="Upload Photo">
+
+          </div>
+          
         </form>
+        
+      </td></tr>
+          </table>
+       
+    
+    
+        
               </div>
             <div class="column is-2"></div>
     </div>
