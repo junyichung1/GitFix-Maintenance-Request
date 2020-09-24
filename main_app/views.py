@@ -22,9 +22,8 @@ def tickets_index(request):
         tickets = unit.ticket_set.all()
         return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets, 'unit': unit})
     except Profile.DoesNotExist:
-        profile = 0
-        tickets = Ticket.objects.filter(unit=profile)
-        return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets})
+        return render(request, 'registration/done.html')
+
         
 @login_required
 def tickets_detail(request, ticket_id):
