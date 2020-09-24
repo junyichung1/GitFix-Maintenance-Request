@@ -5,6 +5,7 @@ from django.views.generic.edit import UpdateView, DeleteView
 from .models import Unit, Ticket, Profile, User, Photo
 from django.contrib import messages
 from django.contrib.auth import login, update_session_auth_hash
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -15,6 +16,7 @@ S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'gitfix'
 
 # Create your views here.
+
 @login_required
 def home(request):
     return redirect('index')
@@ -29,7 +31,6 @@ def tickets_index(request):
     except Profile.DoesNotExist:
         return render(request, 'registration/done.html')
 
-        
 @login_required
 def tickets_detail(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
@@ -61,7 +62,6 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # login(request, user)
             return render(request, 'registration/done.html')
         else:
             error_message = 'Invalid sign up - try again'
@@ -69,11 +69,9 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-
 class NewLogoutView(LogoutView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['categories'] = Category.objects.all()
         return context
 
 class PhoneUpdate(LoginRequiredMixin, UpdateView):
@@ -81,7 +79,6 @@ class PhoneUpdate(LoginRequiredMixin, UpdateView):
     fields = ['phone']
     success_url = '/tickets/'
     
-    # This code prevent edit other users information please test it
     def get_object(self):
         return self.request.user.profile
 
@@ -98,12 +95,10 @@ def change_password(request):
             messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'registration/change_password.html', {
-        'form': form
-    })
+    return render(request, 'registration/change_password.html', { 'form': form })
     
 @login_required
-def edit_names(request, user_id, template_name="registration/edit_names.html"):
+def edit_names(request, user_id):
     if request.method == "POST":
         form = UserForm(data=request.POST, instance=request.user)
         if form.is_valid():

@@ -12,7 +12,6 @@ urlpatterns = [
     path('tickets/<int:pk>/update/', views.TicketUpdate.as_view(), name='tickets_update'),
     path('tickets/<int:ticket_id>/add_photo/', views.add_photo, name='add_photo'),
     path('phone/<int:pk>/update/', views.PhoneUpdate.as_view(), name='phone_update'),
-    # path('users/<int:pk>/update/', views.UserUpdate.as_view(), name='user_update'),
-    path('users/update/poop/<int:user_id>/', views.edit_names, name='user_update'),
+    path('users/update/<int:user_id>/', views.edit_names, name='user_update'),
     path('user/password_change/', views.change_password, name='change_password'),
 ]
