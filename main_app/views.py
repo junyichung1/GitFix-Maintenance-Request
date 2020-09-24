@@ -76,7 +76,7 @@ class PhoneUpdate(LoginRequiredMixin, UpdateView):
     fields = ['phone']
     success_url = '/tickets/'
 
-
+@login_required
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
@@ -92,7 +92,8 @@ def change_password(request):
     return render(request, 'registration/change_password.html', {
         'form': form
     })
-
+    
+@login_required
 def edit_names(request, user_id, template_name="registration/edit_names.html"):
     if request.method == "POST":
         form = UserForm(data=request.POST, instance=request.user)
