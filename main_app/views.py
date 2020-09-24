@@ -1,6 +1,8 @@
+import uuid
+import boto3
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView, DeleteView
-from .models import Unit, Ticket, Profile, User
+from .models import Unit, Ticket, Profile, User, Photo
 from django.contrib import messages
 from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
@@ -8,6 +10,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView
 from .forms import TicketForm, UserForm
+
+S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
+BUCKET = 'gitfix'
 
 # Create your views here.
 @login_required
@@ -108,3 +113,20 @@ def edit_names(request, user_id, template_name="registration/edit_names.html"):
     else:
         form = UserForm(instance=request.user)
         return render(request, 'registration/edit_names.html')
+
+def add_photo(request, ticket_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        # need a unique "key" for S3 / needs image file extension too
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # just in case something goes wrong
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            # build the full url string
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            # we can assign to cat_id or cat (if you have a cat object)
+            Photo.objects.create(url=url, ticket_id=ticket_id)
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('detail', ticket_id=ticket_id)
