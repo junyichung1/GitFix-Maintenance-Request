@@ -6,44 +6,95 @@
     <div class="column is-1"></div>
     <div class="column is-10">
         <div class="columns">
-            <div class="column is-3">
+            <div class="column is-4">
                 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                 <thead>
                     <tr>
-                        <th>User Info</th>
+                        <th colspan="2" bgcolor="#cccccc">User Info</th>
                     </tr>
                 </thead>
             <tbody>
               
                 <tr>
-                    <td>User Name</td>
-                    <td>{{ profile.user.first_name }} {{ profile.user.last_name }}</td>
+                    <td><b>User Name</b></td>
+                    <td>{{ profile }}</td>
                 </tr>
                 <tr>
-                    <td>Unit Number</td>
+                    <td><b>Unit Number</b></td>
                     <td>{{ profile.unit.unit_number }}</td>
                 </tr>
                 <tr>
-                    <td>Email</td>
-                    <td>{{ profile.user.id }}</td>
+                    <td><b>Email</b></td>
+                    <td>{{ user.email }}</td>
                 </tr>
                 <tr>
-                    <td>Phone Number</td>
-                    <td>{{ profile.phone }}</td>
+                    <td><b>Phone Number</b></td>
+                    <td><a href="tel:/{{ profile.phone }}">{{ profile.phone }}</a></td>
                 </tr>
-                <tr>
-                    <td>Unit ID</td>
-                    <td>{{ unit.id }}</td>
-                </tr>
-                <tr>
-                    <td><a href="{% url 'user_update' profile.id %}">Edit</a></td>
-                    <td><a href="{% url 'change_password' %}">Change Password</a></td>
-                </tr>
+
+                <td colspan="2" align="right">
+                    <a class="button is-info is-small" href="{% url 'user_update' profile.id %}"> <i class="fas fa-user-edit"></i>&nbsp;Edit Info</a>
+                    <a class="button is-success is-small" href="{% url 'change_password' %}"> <i class="fas fa-unlock-alt"></i>&nbsp;Change Password</a>
+                </td>
                 
             </tbody></table>
+            <table><tr><td>
+                
+
+                <div class="box">
+                    <article class="media">
+                      <div class="media-left">
+                        <figure class="image is-64x64">
+                          <img src="https://st2.depositphotos.com/1010683/7408/i/950/depositphotos_74080751-stock-photo-asian-female-customer-service-representative.jpg" alt="Image">
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <div class="content">
+                          <p>
+                            <small>Your Dedicated Representative</small> <br><strong>Mary Smith</strong>
+                            <br>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+
+
+
+            </td></tr></table>
+<br>
+            <table><tr><td>
+                
+
+                <div class="box">
+                    <article class="media">
+                      <div class="media-left">
+                        <figure class="image is-64x64">
+                          <img src="https://st2.depositphotos.com/1010683/7408/i/950/depositphotos_74080751-stock-photo-asian-female-customer-service-representative.jpg" alt="Image">
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>We're Here to Serve!</strong>
+                                <br>
+                                <h2 class="is-h2"><i class="fas fa-phone-square"></i> &nbsp;<a href="tel://">512-888-0000</a></h2> </p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+
+
+
+            </td></tr></table>
+
+            
             </div>
             <div class="column is-9">
-                
+                <br>
+                <a class="button is-success is-small" href="{% url 'tickets_create' unit.id %}"><i class="fas fa-plus-square"></i>&nbsp;Create Ticket</a>
+
                 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                     <thead>
                         
@@ -64,19 +115,24 @@
                         <td>{{ ticket.location }}</td>
                         <td>{{ ticket.date_created }}</td>
                         <td> {{ ticket.priority }}</td>
-                        <td align="center"><i class="fas fa-folder-open"></i></td>
+                        <td align="center">
+                            {% if ticket.status == 'NEW' %}
+                            <i class="fas fa-folder-open"></i>
+                            {% elif ticket.status == 'PEN' %}
+                            <i class="fas fa-tools"></i>
+                            {% elif ticket.status == 'COM' %}
+                            <i class="fas fa-calendar-check"></i>
+                            {% endif %}
+                        </td>
                       </tr>
-                      {% endfor %}
-                      <a class="button is-success is-small" href="{% url 'tickets_create' unit.id %}"><i class="fas fa-plus-square"></i>&nbsp;Create Ticket</a>
-                      
+                      {% endfor %}                      
                      
                     </tbody>
                     <tfoot>
                         <tr>
                           <td colspan="5">New Ticket : <i class="fas fa-folder-open"></i>&nbsp;&nbsp;
                             Pending : <i class="fas fa-tools"></i>&nbsp;&nbsp;
-                            Done : <i class="fas fa-calendar-check"></i>&nbsp;&nbsp;
-                            Cancel : <i class="fas fa-window-close"></i></td>
+                            Done : <i class="fas fa-calendar-check"></i></td>
                         </tr>
                     </tfoot>
                   </table>
@@ -84,7 +140,7 @@
 
             </div>
         </div>
-    <div class="column is-1">{{ profile }}</div>
+    <div class="column is-1"></div>
 </div>
 
 

@@ -2,15 +2,88 @@
 
 {% block content %}
 
-  <!-- Leaving the action empty makes the form post to the same url used to display it -->
-  <form action="" method="post">
-    <!-- Django requires the following for security purposes -->
-    {% csrf_token %}
-    <table>
-      <!-- Render the inputs inside of <tr>s & <td>s -->
-      {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit!" class="btn">
-  </form>
+ 
+<section class="updateform">
+  <div class="columns">
+  <<div class="column is-2"></div>
+  <div class="column is-8">
+    <p><br><h3 class="title is-3">Update Ticket</h3></p>
+    {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="field">
+        <label for="id_category" class="label">Category</label>
+        <div class="select">
+          <select name="category" id="id_category" required>
+            {% if ticket.category == 'ELE' %}
+            <option selected value="{{ ticket.category }}">Electric</option>
+            <option value="PLU">Plumbing</option>
+            <option value="LIG">Light Fixtures</option>
+            {% elif ticket.category == 'PLU' %}
+            <option value="ELE">Electric</option>
+            <option selected value="{{ ticket.category }}">Plumbing</option>
+            <option value="LIG">Light Fixtures</option>
+            {% elif ticket.category == 'LIG' %}
+            <option value="ELE">Electric</option>
+            <option value="PLU">Plumbing</option>
+            <option selected value="{{ ticket.category }}">Light Fixtures</option>
+            {% endif %}
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="id_priority" class="label">Priority</label>
+        <div class="select">
+          <select name="priority" id="id_priority" required>
+            <option>Please Select a Priority</option>
+            {% if ticket.priority == 'L' %}
+            <option selected value="L">Low</option>
+            <option value="M">Medium</option>
+            <option value="H">High</option>
+            {% elif ticket.priority == 'M' %}
+            <option value="L">Low</option>
+            <option selected value="M">Medium</option>
+            <option value="H">High</option>
+            {% elif ticket.priority == 'H' %}
+            <option value="L">Low</option>
+            <option value="M">Medium</option>
+            <option selected value="H">High</option>
+            {% endif %}
+           
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="id_location" class="label">Location</label>
+        <div class="control">
+          <input class="input" type="text" name="location" id="id_location" placeholder="Location" required value="{{ ticket.location }}">
+        </div>
+      </div>
+      <div class="field">
+        <label for="id_description" class="label">Confirm New Password</label>
+        <div class="control">
+          <textarea class="textarea" name="description" id="id_description" placeholder="Description of request" rows="10">{{ ticket.description }}</textarea>
+       </div>
+      </div>
+      <div class="control is-pulled-right">
+      <input type="submit" class="button is-link" value="Update">
+      </div>
+
+      
+    </form>
+
+
+</div>
+              
+            </div>
+          <div class="column is-2"></div>
+  </div>
+</section>  
+<div class="thanks">
+  <ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul>
+</div> 
+
+
+
 {% endblock %}
 

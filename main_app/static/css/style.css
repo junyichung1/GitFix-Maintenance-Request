@@ -59,3 +59,10 @@ div.form-login {
   border-radius: 5px;
 }
 
+.thanks {
+  text-align: center;
+}
+
+span.heart {
+  color: #f00000;
+}

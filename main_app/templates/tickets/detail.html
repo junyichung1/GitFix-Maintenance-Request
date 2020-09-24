@@ -1,18 +1,52 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Details page</h1>
 
-<h1>TicketID</h1>
-<h1>Location</h1>
-<h1>Date</h1>
-<h1>Priority</h1>
 
-<h1>{{ ticket.id }}</h1>
-<h1>{{ ticket.location }}</h1>
-<h1>{{ ticket.description }}</h1>
-<h1>{{ ticket.priority }}</h1>
 
-<a href="{% url 'tickets_update' ticket.id %}">Edit</a>
-<a href="{% url 'tickets_delete' ticket.id %}">Delete</a>
+<section class="updateform">
+    <div class="columns">
+    <<div class="column is-2"></div>
+    <div class="column is-8">
+        <p><br><h3 class="title is-3">Detail of Ticket#{{ ticket.id }}</h3></p>
+
+
+
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <thead>
+                
+              <tr>
+                <th>TicketID</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Priority</th>
+              </tr>
+              
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="{% url 'detail' ticket.id %}">{{ ticket.id }}</a></td>
+                <td>{{ ticket.location }}</td>
+                <td>{{ ticket.date_created }}</td>
+                <td> {{ ticket.priority }}</td>
+              </tr>
+          <tr><td colspan="4">
+            {{ ticket.description }}
+          </td></tr>   
+          <tr><td colspan="4" align="right">
+            <a class="button is-info is-small" href="{% url 'tickets_update' ticket.id %}"> <i class="fas fa-user-edit"></i>&nbsp;Edit Ticket</a>
+            <a class="button is-danger is-small" href="{% url 'tickets_delete' ticket.id %}"> <i class="fas fa-trash-alt"></i>&nbsp;Delete Ticket</a>
+          </td></tr>                   
+             
+            </tbody>
+    
+          </table>
+
+              </div>
+            <div class="column is-2"></div>
+    </div>
+  </section>  
+
+
+  
 {% endblock %}

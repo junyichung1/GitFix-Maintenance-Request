@@ -1,18 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Resident Info</h1>
 
-<!-- Leaving the action empty makes the form post to the same url used to display it -->
-<form action="" method="post">
-  <!-- Django requires the following for security purposes -->
-  {% csrf_token %}
-  <table>
-    <!-- Render the inputs inside of <tr>s & <td>s -->
-    {{ form.as_table }}
-  </table>
-  <input type="submit" value="Submit!" class="btn">
-</form>
+<section class="updateform">
+  <div class="columns">
+  <<div class="column is-2"></div>
+  <div class="column is-8">
+    <p><br><h3 class="title is-3">User Update Form</h3></p>
+    {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="field">
+        <label for="id_phone" class="label">Phone Number</label>
+        <div class="control">
+          <input class="input" type="text" name="phone" id="id_phone" placeholder="phone" required minlength="10" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="{{ profile.phone }}">
+        </div>
+      </div>
+      <div class="control is-pulled-right">
+      <input type="submit" class="button is-link" value="Update">
+      </div>
+
+      
+    </form>
+
+
+</div>
+              
+            </div>
+          <div class="column is-2"></div>
+  </div>
+</section>  
+
 
 
 {% endblock %}

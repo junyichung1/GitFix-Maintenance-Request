@@ -19,7 +19,7 @@ def tickets_index(request):
     try:
         profile = request.user.profile
         unit = profile.unit
-        tickets = unit.ticket_set.all()
+        tickets = unit.ticket_set.all().order_by('-date_created')[0:5]
         return render(request, 'tickets/index.html', {'profile': profile, 'tickets': tickets, 'unit': unit})
     except Profile.DoesNotExist:
         return render(request, 'registration/done.html')
