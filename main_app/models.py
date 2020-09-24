@@ -9,6 +9,13 @@ CATEGORIES = (
     ('ELE', 'Electric'),
     ('PLU', 'Plumbing'),
     ('LIG', 'Light fixtures'),
+    ('HAC', 'Heating - AC'),
+    ('ELV', 'Elevators'),
+    ('DOR', 'Doors & Locks'),
+    ('WIN', 'Windows'),
+    ('FLR', 'Floors'),
+    ('EXT', 'Exterminator'),
+    ('OTR', 'Other'),
 )
 
 PRIORITIES = (
