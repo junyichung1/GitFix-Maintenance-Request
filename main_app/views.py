@@ -25,6 +25,7 @@ BUCKET = 'gitfix'
 def home(request):
     return redirect('index')
 
+
 @login_required
 def tickets_index(request):
     try:
@@ -35,10 +36,12 @@ def tickets_index(request):
     except Profile.DoesNotExist:
         return render(request, 'registration/done.html')
 
+
 @login_required
 def tickets_detail(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
     return render(request, 'tickets/detail.html', {'ticket': ticket})
+
 
 @login_required
 def tickets_create(request, unit_id):
@@ -53,10 +56,12 @@ def tickets_create(request, unit_id):
         return redirect('index')
     return render(request, 'tickets/ticket_form.html', {'unit': unit, 'ticket_form': ticket_form})
 
+
 class TicketDelete(LoginRequiredMixin, SuccessMessageMixin,  DeleteView):
     model = Ticket
     success_url = '/tickets/'
     success_message = "Ticket was deleted successfully"
+
 
 class TicketUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Ticket
@@ -77,6 +82,7 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
+
 class NewLogoutView(LogoutView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -92,6 +98,7 @@ class PhoneUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_object(self):
         return self.request.user.profile
 
+
 @login_required
 def change_password(request):
     if request.method == 'POST':
@@ -106,7 +113,8 @@ def change_password(request):
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'registration/change_password.html', { 'form': form })
-    
+
+
 @login_required
 def edit_names(request, user_id):
     if request.method == "POST":
@@ -120,6 +128,8 @@ def edit_names(request, user_id):
         form = UserForm(instance=request.user)
         return render(request, 'registration/edit_names.html')
 
+
+@login_required
 def add_photo(request, ticket_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
