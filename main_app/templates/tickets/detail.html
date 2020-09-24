@@ -32,11 +32,11 @@
                 <td>{{ ticket.date_created }}</td>
                 <td> {{ ticket.priority }}</td>
               </tr>
-          <tr><td colspan="4">
+          <tr><td colspan="5">
             {{ ticket.description }}
           </td></tr>   
-          <tr><td colspan="4" align="right">
-            <a class="button is-info is-small" href="{% url 'tickets_update' ticket.id %}"> <i class="fas fa-user-edit"></i>&nbsp;Edit Ticket</a>
+          <tr><td colspan="5" align="right">
+            <a class="button is-info is-small" href="{% url 'tickets_update' ticket.id %}"> <i class="fas fa-edit"></i>&nbsp;Edit Ticket</a>
             <a class="button is-danger is-small" href="{% url 'tickets_delete' ticket.id %}"> <i class="fas fa-trash-alt"></i>&nbsp;Delete Ticket</a>
           </td></tr>                   
              
