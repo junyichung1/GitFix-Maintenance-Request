@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+{% if messages %}
+{% for message in messages %}
+    <div class="notification" role="alert">{{ message }}</div>
+{% endfor %}
+{% endif %}
 <br><br>
 <section class="loginform2">
   <div class="columns">
