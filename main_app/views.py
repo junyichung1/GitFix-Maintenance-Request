@@ -11,6 +11,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView
 from .forms import TicketForm, UserForm
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+
+
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'gitfix'
@@ -45,16 +49,20 @@ def tickets_create(request, unit_id):
         new_ticket = form.save(commit=False)
         new_ticket.unit_id = unit_id
         new_ticket.save()
+        messages.success(request, 'Ticket created successfully. We\'ll get in touch with you soon')
         return redirect('index')
     return render(request, 'tickets/ticket_form.html', {'unit': unit, 'ticket_form': ticket_form})
 
-class TicketDelete(LoginRequiredMixin, DeleteView):
+class TicketDelete(LoginRequiredMixin, SuccessMessageMixin,  DeleteView):
     model = Ticket
     success_url = '/tickets/'
+    success_message = "Ticket was deleted successfully"
 
-class TicketUpdate(LoginRequiredMixin, UpdateView):
+class TicketUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Ticket
     fields = ['category', 'priority', 'location', 'description']
+    success_message = "Ticket was updated successfully"
+
 
 def signup(request):
     error_message = ''
@@ -72,13 +80,15 @@ def signup(request):
 class NewLogoutView(LogoutView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        success_message = "Logged out successfully"
         return context
+    
 
-class PhoneUpdate(LoginRequiredMixin, UpdateView):
+class PhoneUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Profile
     fields = ['phone']
-    success_url = '/tickets/'
-    
+    success_message = "Phone number was updated successfully"
+    success_url = '/'
     def get_object(self):
         return self.request.user.profile
 
@@ -92,7 +102,7 @@ def change_password(request):
             messages.success(request, 'Your password was successfully updated!')
             return redirect('index')
         else:
-            messages.error(request, 'Please correct the error below.')
+            messages.error(request, 'Please read instructions below and try again.')
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'registration/change_password.html', { 'form': form })
@@ -104,6 +114,7 @@ def edit_names(request, user_id):
         if form.is_valid():
             user = form.save(commit=False)
             user.save()
+            messages.success(request, 'User Information was successfully updated!')
             return redirect('index')
     else:
         form = UserForm(instance=request.user)

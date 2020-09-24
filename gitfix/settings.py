@@ -125,3 +125,6 @@ LOGOUT_REDIRECT_URL = '/'
 
 import django_heroku
 django_heroku.settings(locals())
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+

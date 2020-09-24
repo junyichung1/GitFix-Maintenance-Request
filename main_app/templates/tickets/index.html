@@ -97,6 +97,11 @@
             
             </div>
             <div class="column is-9">
+                {% if messages %}
+                {% for message in messages %}
+                    <div class="notification" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
                 <br>
                 <a class="button is-success is-small" href="{% url 'tickets_create' unit.id %}"><i class="fas fa-plus-square"></i>&nbsp;Create Ticket</a>
 
