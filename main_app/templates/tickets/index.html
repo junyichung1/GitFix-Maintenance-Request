@@ -110,8 +110,8 @@
                     </thead>
                     <tbody>
                       {% for ticket in tickets %}
-                      <tr>
-                        <td><a href="{% url 'detail' ticket.id %}">{{ ticket.id }}</a></td>
+                      <tr id="index-row" onclick="window.location.href='{% url 'detail' ticket.id %}'">
+                        <td>{{ ticket.id }}</a></td>
                         <td>{{ ticket.location }}</td>
                         <td>{{ ticket.date_created }}</td>
                         <td> {{ ticket.priority }}</td>
@@ -124,7 +124,7 @@
                             <i class="fas fa-calendar-check"></i>
                             {% endif %}
                         </td>
-                      </tr>
+                    </tr>
                       {% endfor %}                      
                      
                     </tbody>
