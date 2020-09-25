@@ -1,10 +1,10 @@
 # GitFix
 ### Your go to maintenance buddy
 
-We create GitFix to make residents and community. hotel managers's life easier.
-They can schedule regular maintenance. Receive maintenance requests. Assign work orders for emergency repairs. Keep your guests and tenants happy.
+We created GitFix to make your residents, community, and hotel managers' lives easier.
+They can schedule regular maintenance work orders, receive maintenance requests, assign work orders for emergency repairs, and ultimately keep your guests and tenants happy.
 
-And also they can track and get reports about service tickets.
+Also they can track and get reports about their service tickets.
 
 ### Screenshots
 
@@ -57,6 +57,10 @@ And also they can track and get reports about service tickets.
 
 ### Getting Started
 
+You can use the below account to try the application
+username: SEI-EC-DABEST
+password: P@ssword1
+
 * [Let's fix something broken](https://gitfix.herokuapp.com/)
 
 * [GitFix Trello Board](https://trello.com/b/ast4CswJ/gitfix)
@@ -65,17 +69,17 @@ And also they can track and get reports about service tickets.
 
 #### Icebox Items
 
-* New module for users to add files, documents to their tickets
+* New module for users to add files and documents to their tickets
 
 * Connect with Google Oauth
 
 * AAA set and sort tickets by priority
 
-* API option to integrate searching materials
+* API option to integrate searching and purchasing materials
 
 * Report options
 
-* History of user tickets
+* Full History of user tickets
 
 #### Wireframe
 
