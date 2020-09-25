@@ -55,7 +55,13 @@ And also they can track and get reports about service tickets.
 </tr>
 </table>
 
+### Getting Started
 
+* [Let's fix something broken](https://gitfix.herokuapp.com/)
+
+* [GitFix Trello Board](https://trello.com/b/ast4CswJ/gitfix)
+
+* [GitFix Pitch-Deck](https://docs.google.com/presentation/d/1-oQpJnpJCAoAk-xeG7vLiwSd8eARFUz55D3za1gpNfk/edit?usp=sharing)
 
 #### Icebox Items
 
@@ -68,6 +74,8 @@ And also they can track and get reports about service tickets.
 * API option to integrate searching materials
 
 * Report options
+
+* History of user tickets
 
 #### Wireframe
 
