@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<section class="updateform">
+  <div class="columns">
+  <div class="column is-2"></div>
+  <div class="column is-3">
+    <p><br><h3 class="title is-3">Contact Us</h3></p>
+    <br>
+    
+    <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" type="text" required>
+        </div>
+      </div>   
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input" type="email" placeholder="Email input" value="hello@">
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </div>
+
+      </div>
+      
+      <div class="field">
+        <label class="label">Subject</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option>Membership</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Message</label>
+        <div class="control">
+          <textarea class="textarea" placeholder="Textarea"></textarea>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Submit</button>
+        </div>
+      </div><br><br>
+   </div>
+   <div class="column is-5">
+    <br><br><br><br><br><br><img src="https://advancedatascience.com/wp-content/uploads/2020/09/istockphoto-613225608-612x612-1.jpg">
+   </div>
+              
+            </div>
+          <div class="column is-2"></div>
+  </div>
+</section>  
+
+
+
+{% endblock %}
+
+

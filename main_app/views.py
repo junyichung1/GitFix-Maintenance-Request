@@ -139,3 +139,13 @@ def unassoc_photo(request, ticket_id, photo_id):
   photo = Photo.objects.get(id=photo_id)
   photo.delete()
   return redirect('detail', ticket_id=ticket_id)
+
+
+def about(request):
+    return render(request, 'about.html')
+
+def how(request):
+    return render(request, 'how.html')
+
+def contact(request):
+    return render(request, 'contact.html')

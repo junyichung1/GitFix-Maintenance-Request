@@ -75,14 +75,6 @@ div.notification {
 }
 
 
-
-
-.commentbox{
-  background: hsl(213, 82%, 78%);
-  padding: 10px;
-  border-radius: 5px;
-}
-
 .thanks {
   text-align: center;
 }
@@ -91,5 +83,9 @@ span.heart {
   color: #f00000;
 }
 
+div.deletethis {
+  margin-left: 7px;
+  margin-top: -40px;
 
+}
 
