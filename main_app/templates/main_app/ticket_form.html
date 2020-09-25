@@ -19,14 +19,112 @@
             <option selected value="{{ ticket.category }}">Electric</option>
             <option value="PLU">Plumbing</option>
             <option value="LIG">Light Fixtures</option>
+            <option value="HAC">Heating - AC</option>
+            <option value="ELV">Elevators</option>
+            <option value="DOR">Doors & Locks</option>
+            <option value="WIN">Windows</option>
+            <option value="FLR">Floors</option>
+            <option value="EXT">Exterminator</option>
+            <option value="OTR">Other</option>
             {% elif ticket.category == 'PLU' %}
             <option value="ELE">Electric</option>
             <option selected value="{{ ticket.category }}">Plumbing</option>
             <option value="LIG">Light Fixtures</option>
+            <option value="HAC">Heating - AC</option>
+            <option value="ELV">Elevators</option>
+            <option value="DOR">Doors & Locks</option>
+            <option value="WIN">Windows</option>
+            <option value="FLR">Floors</option>
+            <option value="EXT">Exterminator</option>
+            <option value="OTR">Other</option>
             {% elif ticket.category == 'LIG' %}
             <option value="ELE">Electric</option>
             <option value="PLU">Plumbing</option>
             <option selected value="{{ ticket.category }}">Light Fixtures</option>
+            <option value="HAC">Heating - AC</option>
+            <option value="ELV">Elevators</option>
+            <option value="DOR">Doors & Locks</option>
+            <option value="WIN">Windows</option>
+            <option value="FLR">Floors</option>
+            <option value="EXT">Exterminator</option>
+            <option value="OTR">Other</option>
+            {% elif ticket.category == 'HAC' %}
+            <option value="ELE">Electric</option>
+            <option value="PLU">Plumbing</option>
+            <option value="LIG">Light Fixtures</option>
+            <option selected value="{{ ticket.category }}">Heating - AC</option>
+            <option value="ELV">Elevators</option>
+            <option value="DOR">Doors & Locks</option>
+            <option value="WIN">Windows</option>
+            <option value="FLR">Floors</option>
+            <option value="EXT">Exterminator</option>
+            <option value="OTR">Other</option>
+            {% elif ticket.category == 'LIG' %}
+            <option value="ELE">Electric</option>
+            <option value="PLU">Plumbing</option>
+            <option value="LIG">Light Fixtures</option>
+            <option value="HAC">Heating - AC</option>
+            <option selected value="{{ ticket.category }}">Elevators</option>
+            <option value="DOR">Doors & Locks</option>
+            <option value="WIN">Windows</option>
+            <option value="FLR">Floors</option>
+            <option value="EXT">Exterminator</option>
+            <option value="OTR">Other</option>
+            {% elif ticket.category == 'LIG' %}
+            <option value="ELE">Electric</option>
+            <option value="PLU">Plumbing</option>
+            <option value="LIG">Light Fixtures</option>
+            <option value="HAC">Heating - AC</option>
+            <option value="ELV">Elevators</option>
+            <option selected value="{{ ticket.category }}">Doors & Locks</option>
+            <option value="WIN">Windows</option>
+            <option value="FLR">Floors</option>
+            <option value="EXT">Exterminator</option>
+            <option value="OTR">Other</option>
+            {% elif ticket.category == 'LIG' %}
+            <option value="ELE">Electric</option>
+            <option value="PLU">Plumbing</option>
+            <option value="LIG">Light Fixtures</option>
+            <option value="HAC">Heating - AC</option>
+            <option value="ELV">Elevators</option>
+            <option value="DOR">Doors & Locks</option>
+            <option selected value="{{ ticket.category }}">Windows</option>
+            <option value="FLR">Floors</option>
+            <option value="EXT">Exterminator</option>
+            <option value="OTR">Other</option>
+            {% elif ticket.category == 'LIG' %}
+            <option value="ELE">Electric</option>
+            <option value="PLU">Plumbing</option>
+            <option value="LIG">Light Fixtures</option>
+            <option value="HAC">Heating - AC</option>
+            <option value="ELV">Elevators</option>
+            <option value="DOR">Doors & Locks</option>
+            <option value="WIN">Windows</option>
+            <option selected value="{{ ticket.category }}">Floors</option>
+            <option value="EXT">Exterminator</option>
+            <option value="OTR">Other</option>
+            {% elif ticket.category == 'LIG' %}
+            <option value="ELE">Electric</option>
+            <option value="PLU">Plumbing</option>
+            <option value="LIG">Light Fixtures</option>
+            <option value="HAC">Heating - AC</option>
+            <option value="ELV">Elevators</option>
+            <option value="DOR">Doors & Locks</option>
+            <option value="WIN">Windows</option>
+            <option value="FLR">Floors</option>
+            <option selected value="{{ ticket.category }}">Exterminator</option>
+            <option value="OTR">Other</option>
+            {% elif ticket.category == 'LIG' %}
+            <option value="ELE">Electric</option>
+            <option value="PLU">Plumbing</option>
+            <option value="LIG">Light Fixtures</option>
+            <option value="HAC">Heating - AC</option>
+            <option value="ELV">Elevators</option>
+            <option value="DOR">Doors & Locks</option>
+            <option value="WIN">Windows</option>
+            <option value="FLR">Floors</option>
+            <option value="EXT">Exterminator</option>
+            <option selected value="{{ ticket.category }}">OtherC</option>
             {% endif %}
           </select>
         </div>
