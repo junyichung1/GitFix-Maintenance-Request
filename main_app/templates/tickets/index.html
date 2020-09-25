@@ -120,7 +120,7 @@
                     </thead>
                     <tbody>
                       {% for ticket in tickets %}
-                      <tr id="index-row" onclick="window.location.href='{% url 'detail' ticket.id %}'">
+                      <tr id="index-row" onclick="window.location.href='{% url 'detail' ticket.id %}'"  style="cursor:pointer;">
                         <td>{{ ticket.id }}</a></td>
                         <td>{{ ticket.location }}</td>
                         <td>{{ ticket.date_created }}</td>
