@@ -59,9 +59,9 @@
             <option value="FLR">Floors</option>
             <option value="EXT">Exterminator</option>
             <option value="OTR">Other</option>
-            {% elif ticket.category == 'LIG' %}
-            <option value="ELE">Electric</option>
-            <option value="PLU">Plumbing</option>
+            {% elif ticket.category == 'ELE' %}
+            <option value="ELE">Electric</op/option>
+            <option value="PLU">Plumbing<tion>
             <option value="LIG">Light Fixtures</option>
             <option value="HAC">Heating - AC</option>
             <option selected value="{{ ticket.category }}">Elevators</option>
@@ -70,7 +70,7 @@
             <option value="FLR">Floors</option>
             <option value="EXT">Exterminator</option>
             <option value="OTR">Other</option>
-            {% elif ticket.category == 'LIG' %}
+            {% elif ticket.category == 'DOR' %}
             <option value="ELE">Electric</option>
             <option value="PLU">Plumbing</option>
             <option value="LIG">Light Fixtures</option>
@@ -81,7 +81,7 @@
             <option value="FLR">Floors</option>
             <option value="EXT">Exterminator</option>
             <option value="OTR">Other</option>
-            {% elif ticket.category == 'LIG' %}
+            {% elif ticket.category == 'WIN' %}
             <option value="ELE">Electric</option>
             <option value="PLU">Plumbing</option>
             <option value="LIG">Light Fixtures</option>
@@ -92,7 +92,7 @@
             <option value="FLR">Floors</option>
             <option value="EXT">Exterminator</option>
             <option value="OTR">Other</option>
-            {% elif ticket.category == 'LIG' %}
+            {% elif ticket.category == 'FLR' %}
             <option value="ELE">Electric</option>
             <option value="PLU">Plumbing</option>
             <option value="LIG">Light Fixtures</option>
@@ -103,7 +103,7 @@
             <option selected value="{{ ticket.category }}">Floors</option>
             <option value="EXT">Exterminator</option>
             <option value="OTR">Other</option>
-            {% elif ticket.category == 'LIG' %}
+            {% elif ticket.category == 'EXT' %}
             <option value="ELE">Electric</option>
             <option value="PLU">Plumbing</option>
             <option value="LIG">Light Fixtures</option>
@@ -114,7 +114,7 @@
             <option value="FLR">Floors</option>
             <option selected value="{{ ticket.category }}">Exterminator</option>
             <option value="OTR">Other</option>
-            {% elif ticket.category == 'LIG' %}
+            {% elif ticket.category == 'OTR' %}
             <option value="ELE">Electric</option>
             <option value="PLU">Plumbing</option>
             <option value="LIG">Light Fixtures</option>
@@ -124,7 +124,7 @@
             <option value="WIN">Windows</option>
             <option value="FLR">Floors</option>
             <option value="EXT">Exterminator</option>
-            <option selected value="{{ ticket.category }}">OtherC</option>
+            <option selected value="{{ ticket.category }}">Other</option>
             {% endif %}
           </select>
         </div>

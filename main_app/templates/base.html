@@ -51,7 +51,7 @@
             {% if user.is_authenticated %}  
                 
                 
-            <div class="welcome">Welcome, <b>{{ profile }}</b> nice to see you again &nbsp;&nbsp;</div>  
+            <div class="welcome">Welcome, <b>{{ user.username }}</b> nice to see you again &nbsp;&nbsp;</div>  
                  {% if user.is_superuser %}
                  <a class="button is-danger is-small" href="/admin/"><i class="fas fa-sign-out-alt"></i>&nbsp;Super User Area</a>            
                  {% endif %}
