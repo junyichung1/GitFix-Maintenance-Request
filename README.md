@@ -35,7 +35,7 @@ And also they can track and get reports about service tickets.
 
 <table>
 <tr>
-<td colspan="3" align="center">
+<td colspan="4" align="center">
 <img src="https://icon-library.com/images/django-icon/django-icon-7.jpg">
 </td>
 </tr>
