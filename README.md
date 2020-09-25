@@ -1,10 +1,34 @@
 # GitFix
 ### Your go to maintenance buddy
 
-Our app information and details
+We create GitFix to make residents and community. hotel managers's life easier.
+They can schedule regular maintenance. Receive maintenance requests. Assign work orders for emergency repairs. Keep your guests and tenants happy.
 
+And also they can track and get reports about service tickets.
 
+### Screenshots
 
+![Screenshot](https://i.imgur.com/TTCMuma.png)
+
+![Screenshot](https://i.imgur.com/KrHQvx1.png)
+
+![Screenshot](https://i.imgur.com/GOD3tWb.png)
+
+![Screenshot](https://i.imgur.com/g4iV5RF.png)
+
+![Screenshot](https://i.imgur.com/hauyi5l.png)
+
+![Screenshot](https://i.imgur.com/lwuKCJH.png)
+
+![Screenshot](https://i.imgur.com/rFobxQg.png)
+
+![Screenshot](https://i.imgur.com/mEm9mbV.png)
+
+![Screenshot](https://i.imgur.com/I21514k.png)
+
+![Screenshot](https://i.imgur.com/FCfpyEa.png)
+
+![Screenshot](https://i.imgur.com/t0NpXeK.png)
 
 
 #### Used Technologies
@@ -25,6 +49,9 @@ Our app information and details
 <td>
 <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--gaI7Ff9D--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/6lu26u1oaysf8cdfiiux.png">
 </td>
+<td>
+<img src="https://bestofjs.org/logos/bulma.svg">
+</td>
 </tr>
 </table>
 
@@ -32,9 +59,21 @@ Our app information and details
 
 #### Icebox Items
 
+* New module for users to add files, documents to their tickets
+
+* Connect with Google Oauth
+
+* AAA set and sort tickets by priority
+
+* API option to integrate searching materials
+
+* Report options
+
 #### Wireframe
 
-#### ERD
+![Wireframe](https://i.imgur.com/QK1pxPj.png)
 
+#### ERD
+![ERD](https://i.imgur.com/dNbYEMZ.png)
 
 

@@ -1,3 +1,5 @@
+#  IMPORT AND INCLUDES FOR VIEWS.PY
+
 import uuid
 import boto3
 from django.shortcuts import render, redirect
@@ -15,15 +17,20 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 
 
+# AWS INFORMATION
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'gitfix'
 
 
+# HOME
 
 @login_required
 def home(request):
     return redirect('index')
+
+
+# USER DASHBOARD
 
 
 @login_required
@@ -37,10 +44,16 @@ def tickets_index(request):
         return render(request, 'registration/done.html')
 
 
+# TICKET DETAILS
+
+
 @login_required
 def tickets_detail(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
     return render(request, 'tickets/detail.html', {'ticket': ticket})
+
+
+# ADD NEW TICKET
 
 
 @login_required
@@ -57,10 +70,16 @@ def tickets_create(request, unit_id):
     return render(request, 'tickets/ticket_form.html', {'unit': unit, 'ticket_form': ticket_form})
 
 
+# DELETE A TICKET
+
+
 class TicketDelete(LoginRequiredMixin, SuccessMessageMixin,  DeleteView):
     model = Ticket
     success_url = '/tickets/'
     success_message = "Ticket was deleted successfully"
+
+
+# UPDATE A TICKET
 
 
 class TicketUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
@@ -68,6 +87,7 @@ class TicketUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     fields = ['category', 'priority', 'location', 'description']
     success_message = "Ticket was updated successfully"
 
+# NEW USER - SIGNUP
 
 def signup(request):
     error_message = ''
@@ -82,6 +102,8 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
+# LOGOUT
+
 
 class NewLogoutView(LogoutView):
     def get_context_data(self, **kwargs):
@@ -89,6 +111,7 @@ class NewLogoutView(LogoutView):
         success_message = "Logged out successfully"
         return context
     
+# PHONE NUMBER UPDATE
 
 class PhoneUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Profile
@@ -97,6 +120,10 @@ class PhoneUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = '/'
     def get_object(self):
         return self.request.user.profile
+
+
+# CHANGE PASSWORD
+
 
 
 @login_required
@@ -113,6 +140,8 @@ def change_password(request):
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'registration/change_password.html', { 'form': form })
+  
+# EDIT USER INFO
 
 
 @login_required
@@ -129,6 +158,7 @@ def edit_names(request, user_id):
         return render(request, 'registration/edit_names.html')
 
 
+
 @login_required
 def add_photo(request, ticket_id):
     photo_file = request.FILES.get('photo-file', None)
@@ -143,6 +173,7 @@ def add_photo(request, ticket_id):
             print('An error occurred uploading file to S3')
     return redirect('detail', ticket_id=ticket_id)
 
+# DELETE PHOTO
 
 @login_required
 def unassoc_photo(request, ticket_id, photo_id):
@@ -150,6 +181,7 @@ def unassoc_photo(request, ticket_id, photo_id):
   photo.delete()
   return redirect('detail', ticket_id=ticket_id)
 
+# INFO PAGES
 
 def about(request):
     return render(request, 'about.html')

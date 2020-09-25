@@ -5,8 +5,12 @@
   <div class="columns">
   <div class="column is-2"></div>
   <div class="column is-8">
+      {% if error_message %}
+                
+                    <div class="notification" role="alert">{{ error_message }}</div>
+           
+            {% endif %}
     <p><br><h3 class="title is-3">Registration Form</h3></p>
-    {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
     <form method="post" action="/accounts/signup/">
       {% csrf_token %}
       <div class="field">
