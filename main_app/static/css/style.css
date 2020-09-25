@@ -74,6 +74,18 @@ div.notification {
 
 }
 
+div.noimage {
+  margin-bottom: 10px;
+  background: #efefef;
+  text-align: center;
+  color: #3f3f3f;
+  font-weight: 200;
+  padding: 5px;
+  margin-top:12px
+
+}
+
+
 
 .thanks {
   text-align: center;
